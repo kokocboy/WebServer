@@ -10,20 +10,20 @@
 #include <stdlib.h>
 #include <sys/epoll.h>
 #include<fstream>
-#include "socktUse.h"
+#include "serverSockt.h"
 #include "client.h"
 using namespace std;
 int main()
 {
-	SocktUse *mainSockt=new SocktUse();
+	ServerSockt *serverSockt=new ServerSockt();
 	while (true)
 	{
 		Client *client=new Client();
-		client->get_fd(mainSockt->get_fd());
+		client->get_fd(serverSockt->get_fd());
 		client->Read();
 		client->Write();
 		delete client;
 	}
-	delete mainSockt;
+	delete serverSockt;
 	return 0;
 }

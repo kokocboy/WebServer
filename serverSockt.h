@@ -1,5 +1,5 @@
-#ifndef temp
-#define temp
+#ifndef serverSockt_h
+#define serverSockt_h
 #include<iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -13,24 +13,24 @@
 #include <sys/epoll.h>
 #include<fstream>
 using namespace std;
-class SocktUse
+class ServerSockt
 {
 private:
     int fd;
     struct sockaddr_in init(int fd);
 public:
-    SocktUse();
-    ~SocktUse();
+    ServerSockt();
+    ~ServerSockt();
     int get_fd();
 };
-int SocktUse::get_fd()
+int ServerSockt::get_fd()
 {
     return fd;
 }
-SocktUse::SocktUse()
+ServerSockt::ServerSockt()
 {
     fd=socket(PF_INET,SOCK_STREAM,0);
-	struct sockaddr_in address=SocktUse::init(fd);
+	struct sockaddr_in address=ServerSockt::init(fd);
     int status=bind( fd, ( struct sockaddr* )&address, sizeof( address ) );//0成功 -1失败
     if(status==-1)
     {
@@ -48,12 +48,12 @@ SocktUse::SocktUse()
     cout<<"main_sockt successful"<<endl;
 }
 
-SocktUse::~SocktUse()
+ServerSockt::~ServerSockt()
 {
     cout<<"main_scokt close"<<endl;
     close(fd);
 }
-struct sockaddr_in SocktUse::init(int fd)
+struct sockaddr_in ServerSockt::init(int fd)
 {
 	int reuse = 1;
     setsockopt( fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof( reuse ) );

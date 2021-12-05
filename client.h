@@ -1,5 +1,5 @@
-#ifndef temp2
-#define temp2
+#ifndef Client_h
+#define Client_h
 #include<iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -84,17 +84,9 @@ void Client::Write()
 	cout<<"------------"<<endl;
 	cout<<"writeLen="<<write_bytes<<endl;
 	cout<<"------------"<<endl;
-	cout<<buf<<endl;
-	cout<<"------------"<<endl;
 }
 char* Client::get_file()
 {
-	static char *buffer=NULL;
-	if(buffer!=NULL)
-	{
-		cout<<"啊啊"<<endl;
-		return buffer;
-	}
     filebuf *pbuf;
     ifstream filestr;
     long size;
@@ -105,12 +97,26 @@ char* Client::get_file()
     size=pbuf->pubseekoff (0,ios::end,ios::in);
     pbuf->pubseekpos (0,ios::in);
     // 分配内存空间 +1是关键，不然又些文件会乱码
-    buffer=new char[size+1];
+    char *buffer=new char[size+1];
     // 获取文件内容
     pbuf->sgetn (buffer,size);
     buffer[size]='\0';//0这是关键
     filestr.close();
-    return buffer;
+	int num=rand()%10;
+	char *bufferTemp=new char[size+4];
+	for(int i=0,j=0;i<strlen(buffer);i++,j++)
+	{
+		bufferTemp[j]=buffer[i];
+		if(i>=1&&buffer[i-1]=='d'&&buffer[i]=='=')
+		{
+			bufferTemp[++j]=' ';
+			bufferTemp[++j]='0'+num;
+			bufferTemp[++j]=' ';
+		}
+	}
+	bufferTemp[size+3]='\0';
+	delete []buffer;
+    return bufferTemp;
 }
 void Client::set_fd(int fd)
 {
