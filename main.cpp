@@ -20,7 +20,10 @@ int main()
 	{
 		Client *client=new Client();
 		client->get_fd(serverSockt->get_fd());
-		client->Read();
+		if(!client->Read()){
+			delete client;
+			continue;
+		}
 		client->Write();
 		delete client;
 	}

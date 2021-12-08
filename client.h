@@ -1,5 +1,5 @@
-#ifndef Client_h
-#define Client_h
+#ifndef CLIENT_H
+#define CLIENT_H
 #include<iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -12,18 +12,20 @@
 #include <stdlib.h>
 #include <sys/epoll.h>
 #include<fstream>
+#include "log.h"
 using namespace std;
 class Client
 {
 private:
+	char *IP;
 	void set_fd(int fd);
 	char* get_file();
 public:
     Client();
     ~Client();
     void get_fd(int main_fd);
-    void Read();
-    void Write();
+    bool Read();
+    bool Write();
     int fd;
 };
 Client::Client()
@@ -33,19 +35,19 @@ Client::Client()
 
 Client::~Client()
 {
-	cout<<"client end"<<endl;
+	info("%s IP=%s client end",pre,IP);
 	close(fd);
-
 }
 void Client::get_fd(int main_fd)
 {
 	struct sockaddr_in client_address;
     socklen_t client_addrlength = sizeof( client_address );
 	fd = accept( main_fd, ( struct sockaddr* )&client_address, &client_addrlength );
-	cout<<"accept"<<endl;
+	IP=inet_ntoa(client_address.sin_addr);
+	info("%s IP=%s States=Accept ",pre,IP);
 	set_fd(fd);
 }
-void Client::Read()
+bool Client::Read()
 {
 	int limit=0;
 	string readStr;
@@ -63,27 +65,23 @@ void Client::Read()
 					break;
 				continue;
 			}
-			cout<<"意外错误"<<endl;
-			break;
+			error("%s IP=%s States=error",pre,IP);
+			return false;
 		}
 		if(read_bytes==0)
 			break;
 		for(int i=0;i<strlen(buf);i++)
 			readStr+=buf[i];
 	}
-	cout<<"------------"<<endl;
-	cout<<"readLen="<<readStr.size()<<endl;
-	cout<<"------------"<<endl;
-	cout<<readStr<<endl;
-	cout<<"------------"<<endl;
+	info("%s IP=%s readLen=%d",pre,IP,readStr.size());
+	return true;
 }
-void Client::Write()
+bool Client::Write()
 {
 	char *buf=get_file();
 	int write_bytes=send(fd,buf,strlen(buf),0);
-	cout<<"------------"<<endl;
-	cout<<"writeLen="<<write_bytes<<endl;
-	cout<<"------------"<<endl;
+	info("%s IP=%s writeLen=%d",pre,IP,write_bytes);
+	return true;
 }
 char* Client::get_file()
 {
@@ -102,30 +100,15 @@ char* Client::get_file()
     pbuf->sgetn (buffer,size);
     buffer[size]='\0';//0这是关键
     filestr.close();
-	int num=rand()%10;
-	char *bufferTemp=new char[size+4];
-	for(int i=0,j=0;i<strlen(buffer);i++,j++)
-	{
-		bufferTemp[j]=buffer[i];
-		if(i>=1&&buffer[i-1]=='d'&&buffer[i]=='=')
-		{
-			bufferTemp[++j]=' ';
-			bufferTemp[++j]='0'+num;
-			bufferTemp[++j]=' ';
-		}
-	}
-	bufferTemp[size+3]='\0';
+	string s=buffer;
+	int pos=s.find("rand=");
+	s=s.substr(0,pos+5)+char('0'+rand()%10)+s.substr(pos+5,s.size()-pos-1);
 	delete []buffer;
-    return bufferTemp;
+    return (char*)s.data();
 }
 void Client::set_fd(int fd)
 {
 	int flag=fcntl(fd,F_GETFL,0);
-	if(flag==-1)
-	{
-		cout<<"set_fd failed="<<endl;
-		return ;
-	}
 	flag|=O_NONBLOCK;
 	fcntl(fd,F_SETFL,flag);
 }

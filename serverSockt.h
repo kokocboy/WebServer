@@ -1,5 +1,5 @@
-#ifndef serverSockt_h
-#define serverSockt_h
+#ifndef SERVERSOCKT_H
+#define SERVERSOCKT_H
 #include<iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <sys/epoll.h>
 #include<fstream>
+#include "log.h"
 using namespace std;
 class ServerSockt
 {
@@ -34,23 +35,21 @@ ServerSockt::ServerSockt()
     int status=bind( fd, ( struct sockaddr* )&address, sizeof( address ) );//0成功 -1失败
     if(status==-1)
     {
-        cout<<"bind failed "<<endl;
+        info("%s bind failed ",pre);
         exit(0);
-        return ;
     }
     status=listen( fd, 1 );//0成功 -1失败
     if(status==-1)
     {
-        cout<<"listen failed"<<endl;
+        info("%s listen failed",pre);
          exit(0);
-        return ;
     }
-    cout<<"main_sockt successful"<<endl;
+    info("%s serverSockt successful",pre);
 }
 
 ServerSockt::~ServerSockt()
 {
-    cout<<"main_scokt close"<<endl;
+    info("%s serverSockt close",pre);
     close(fd);
 }
 struct sockaddr_in ServerSockt::init(int fd)
