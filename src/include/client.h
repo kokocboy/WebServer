@@ -30,6 +30,7 @@ public:
 	void Init();
 	void Close();
 	void Solve();
+	void process();
     int fd;
 	char *IP;
 	string readStr;
@@ -47,9 +48,11 @@ void Client::Init()
 
 Client::~Client()
 {
+
 }
 bool Client::Read()
 {
+		info("%s IP=%s States=Read fd=%d",pre,IP,fd);
 		char buf[100];
 		memset(buf,0,sizeof(buf));
 		int read_bytes = recv(fd,buf,100,0);
@@ -84,9 +87,11 @@ bool Client::Read()
 }
 bool Client::Write()
 {
+	info("%s IP=%s States=Write fd=%d",pre,IP,fd);
 	char *buf=(char*)writeStr.data();
 	if(!writeStr.size()){
 		error("%s IP=%s sendError404",pre,IP);
+		Close();
 		return true;
 	}
 	int write_bytes=send(fd,buf,strlen(buf),0);
@@ -96,6 +101,7 @@ bool Client::Write()
 		return false;
 	}
 	info("%s IP=%s writeLen=%d",pre,IP,write_bytes);
+	Close();
 	return true;
 }
 void Client::Solve()
@@ -139,6 +145,7 @@ void Client::get_file()
     long size;
 	string resourcesUrl="../resources";
 	std::ifstream ifs (resourcesUrl+requseHead[1]);
+	info("%s IP=%s url=%s",pre,IP,(char*)requseHead[1].data());
 	if(!ifs.is_open()||requseHead[1]=="/"){
 		requseHead[1]="/404";
 		 if(requseHead[1]=="/favicon.ico"){

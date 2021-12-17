@@ -7,97 +7,68 @@
 #include <pthread.h>
 #include <queue>
 #include "lock.h"
+#include "client.h"
+#include "log.h"
 using namespace std;
-
-// 线程池类，将它定义为模板类是为了代码复用，模板参数T是任务类
-template<typename T>
-class threadpool {
+struct Task
+{
+    Client *client;
+    int tag=0;
+    Task(Client *c,int t)
+    {
+        client=c;
+        tag=t;
+    }
+};
+class ThreadPool {
 public:
-    /*thread_number是线程池中线程的数量，max_requests是请求队列中最多允许的、等待处理的请求的数量*/
-    threadpool(int thread_number = 8, int max_requests = 10000);
-    ~threadpool();
-    bool append(T* request);
+    ThreadPool();
+    ~ThreadPool();
+    bool append(Task request);
 
 private:
-    /*工作线程运行的函数，它不断从工作队列中取出任务并执行之*/
     static void* worker(void* arg);
     void run();
 
 private:
-    // 线程的数量
-    int m_thread_number;  
-    
-    // 描述线程池的数组，大小为m_thread_number    
-    pthread_t * m_threads;
-
-    // 请求队列中最多允许的、等待处理的请求的数量  
-    int m_max_requests; 
-    
-    // 请求队列
-    queue<T*>que; 
-
-    // 保护请求队列的互斥锁
+    pthread_t *m_threads;
+    queue<Task>que; 
     Locker locker;   
-
-    // 是否有任务需要处理
     Sem sem;                   
 };
+ThreadPool::ThreadPool() {
 
-template< typename T >
-threadpool< T >::threadpool(int thread_number, int max_requests) : 
-        m_thread_number(thread_number), m_max_requests(max_requests), 
-        m_stop(false), m_threads(NULL) {
 
-    if((thread_number <= 0) || (max_requests <= 0) ) {
-        throw std::exception();
-    }
+    m_threads = new pthread_t[4];
 
-    m_threads = new pthread_t[m_thread_number];
-    if(!m_threads) {
-        throw std::exception();
-    }
-
-    // 创建thread_number 个线程，并将他们设置为脱离线程。
-    for ( int i = 0; i < thread_number; ++i ) {
-        printf( "create the %dth thread\n", i);
-        if(pthread_create(m_threads + i, NULL, worker, this ) != 0) {
-            delete [] m_threads;
-            throw std::exception();
-        }
-        
-        if( pthread_detach( m_threads[i] ) ) {
-            delete [] m_threads;
-            throw std::exception();
-        }
+    for ( int i = 0; i < 4; ++i ) {
+        info("%s create the %dth thread",pre,i);
+        pthread_create(m_threads + i, NULL, worker, this );
+        pthread_detach( m_threads[i]); 
     }
 }
 
-template< typename T >
-threadpool< T >::~threadpool() {
+ThreadPool::~ThreadPool() {
     delete [] m_threads;
-    m_stop = true;
 }
 
-template< typename T >
-bool threadpool< T >::append( T* request )
+bool ThreadPool::append( Task request )
 {
     locker.lock();
-        que.push_back(request);
+        que.push(request);
     locker.unlock();
     sem.post();
     return true;
 }
 
-template< typename T >
-void* threadpool< T >::worker( void* arg )
+void* ThreadPool::worker( void* arg )
 {
-    threadpool* pool = ( threadpool* )arg;
+    ThreadPool* pool = ( ThreadPool* )arg;
     pool->run();
     return pool;
 }
 
-template< typename T >
-void threadpool< T >::run() {
+void ThreadPool::run() {
 
     while (true) {
         sem.wait();
@@ -106,12 +77,20 @@ void threadpool< T >::run() {
             locker.unlock();
             continue;
         }
-        T* request = que.front();
-        que.pop_front();
+        Task request = (Task)que.front();
+        que.pop();
         locker.unlock();
-        request->process();
+        switch (request.tag)
+        {
+        case 1:
+            request.client->Read();
+            break;
+        case 2:
+            request.client->Write();
+        default:
+            break;
+        }
     }
-
 }
 
 #endif
