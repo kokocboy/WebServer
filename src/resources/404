@@ -1,0 +1,26 @@
+HTTP/1.1 200 OK
+Date: Sat, 31 Dec 2005 23:59:59 GMT
+Content-Type: text/html;charset=ISO-8859-1
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>404 </title>
+    <style type="text/css">
+        .head404{ width:580px; height:234px; margin:50px auto 0 auto;  no-repeat; }
+        .txtbg404{ width:499px; height:169px; margin:10px auto 0 auto;  no-repeat;}
+        .txtbg404 .txtbox{ width:390px; position:relative; top:30px; left:60px;color:#eee; font-size:13px;}
+        .txtbg404 .txtbox h {margin:5px 0; line-height:100px;}
+        .txtbg404 .txtbox .paddingbox { padding-top:100px;}
+    </style>
+</head>
+<body bgcolor="#494949">
+<div class="head404"></div>
+<div class="txtbg404">
+    <div class="txtbox">
+        <h><font size='10'>404 ERROR</font></h>
+    </div>
+</div>
+</body> 
+</html>

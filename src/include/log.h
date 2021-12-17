@@ -50,9 +50,10 @@ void info(char const *form,...)
     va_list valst;
     va_start(valst, form);
 	int len=vsnprintf(buf , 250, form, valst);
-	buf[len]='\n';
-    buf[len+1]=0;
-    cout<<buf<<endl;
+	buf[len]=0;
+    string str="INFO ";
+    str+=buf;
+    cout<<str<<endl;
 }
 void error(char const *form,...)
 {
@@ -60,8 +61,9 @@ void error(char const *form,...)
     va_list valst;
     va_start(valst, form);
 	int len=vsnprintf(buf , 250, form, valst);
-	buf[len]='\n';
-    buf[len+1]=0;
-    cout<<buf<<endl;
+	buf[len]=0;
+    string str="ERROR ";
+    str+=buf;
+    cout<<str<<endl;
 }
 #endif

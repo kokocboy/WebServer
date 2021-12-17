@@ -38,7 +38,7 @@ ServerSockt::ServerSockt()
         info("%s bind failed ",pre);
         exit(0);
     }
-    status=listen( fd, 1 );//0成功 -1失败
+    status=listen( fd, 2 );//0成功 -1失败
     if(status==-1)
     {
         info("%s listen failed",pre);

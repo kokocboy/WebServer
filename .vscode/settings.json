@@ -16,6 +16,11 @@
   "C_Cpp_Runner.warningsAsError": false,
   "files.associations": {
     "iostream": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "*.tcc": "cpp",
+    "cerrno": "cpp",
+    "system_error": "cpp",
+    "exception": "cpp",
+    "iosfwd": "cpp"
   }
 }
