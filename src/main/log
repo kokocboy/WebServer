@@ -1,0 +1,133 @@
+INFO [Time=2021-12-17 15:16:43 File=../include/serverSockt.h Function=ServerSockt Line=47] serverSockt successful
+INFO [Time=2021-12-17 15:16:43 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=45] IP=111.203.187.68 States=Accept fd=5
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:01 File=../include/client.h Function=Read Line=77] IP=111.203.187.68 readLen=435
+GET
+/index
+HTTP/1.1
+====
+==Accept-Encoding:==gzip, deflate
+==Accept-Language:==zh-CN,zh;q=0.9
+==Accept:==text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+==Host:==kokocboy.top
+==Purpose:==prefetch
+==Upgrade-Insecure-Requests:==1
+==User-Agent:==Mozilla/5.0 (Macintosh; Intel Mac OS X 11_6_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=53] IP=111.203.187.68 States=WriteEvents fd=5
+INFO [Time=2021-12-17 15:17:01 File=../include/client.h Function=Write Line=98] IP=111.203.187.68 writeLen=3488
+INFO [Time=2021-12-17 15:17:01 File=../include/client.h Function=Close Line=166] IP=111.203.187.68 client end
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:01 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=45] IP=111.203.187.68 States=Accept fd=5
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:02 File=../include/client.h Function=Read Line=77] IP=111.203.187.68 readLen=357
+GET
+/favicon.ico
+HTTP/1.1
+====
+==Accept-Encoding:==gzip, deflate
+==Accept-Language:==zh-CN,zh;q=0.9
+==Accept:==image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+==Host:==kokocboy.top
+==Referer:==http://kokocboy.top/index
+==User-Agent:==Mozilla/5.0 (Macintosh; Intel Mac OS X 11_6_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=53] IP=111.203.187.68 States=WriteEvents fd=5
+INFO [Time=2021-12-17 15:17:02 File=../include/client.h Function=Write Line=98] IP=111.203.187.68 writeLen=999
+INFO [Time=2021-12-17 15:17:02 File=../include/client.h Function=Close Line=166] IP=111.203.187.68 client end
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:02 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=45] IP=111.203.187.68 States=Accept fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=../include/client.h Function=Read Line=77] IP=111.203.187.68 readLen=414
+GET
+/221
+HTTP/1.1
+====
+==Accept-Encoding:==gzip, deflate
+==Accept-Language:==zh-CN,zh;q=0.9
+==Accept:==text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+==Host:==kokocboy.top
+==Upgrade-Insecure-Requests:==1
+==User-Agent:==Mozilla/5.0 (Macintosh; Intel Mac OS X 11_6_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=53] IP=111.203.187.68 States=WriteEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=../include/client.h Function=Write Line=98] IP=111.203.187.68 writeLen=999
+INFO [Time=2021-12-17 15:17:05 File=../include/client.h Function=Close Line=166] IP=111.203.187.68 client end
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=45] IP=111.203.187.68 States=Accept fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=49] IP=111.203.187.68 States=ReadEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=../include/client.h Function=Read Line=77] IP=111.203.187.68 readLen=355
+GET
+/favicon.ico
+HTTP/1.1
+====
+==Accept-Encoding:==gzip, deflate
+==Accept-Language:==zh-CN,zh;q=0.9
+==Accept:==image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+==Host:==kokocboy.top
+==Referer:==http://kokocboy.top/221
+==User-Agent:==Mozilla/5.0 (Macintosh; Intel Mac OS X 11_6_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=53] IP=111.203.187.68 States=WriteEvents fd=5
+INFO [Time=2021-12-17 15:17:05 File=../include/client.h Function=Write Line=98] IP=111.203.187.68 writeLen=999
+INFO [Time=2021-12-17 15:17:05 File=../include/client.h Function=Close Line=166] IP=111.203.187.68 client end
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=61] epollNumbers=1
+INFO [Time=2021-12-17 15:17:05 File=main.cpp Function=main Line=27] epollBlock
