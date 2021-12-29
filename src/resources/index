@@ -140,7 +140,7 @@ input,button {
     </head>
     <body>
         <div class="box">
-            <h2>index web rand=</h2>
+            <h2>index web rand=index</h2>
             <form action="">
                 <div class="item">
                     <input type="text" required>

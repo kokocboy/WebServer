@@ -14,20 +14,21 @@
 #include "../include/client.h"
 #include "../include/epoll.h"
 #include "../include/threadPool.h"
-#define MAX_FD 65536
+//65536
+#define MAX_FD 1000
 using namespace std;
 int main()
 {
 	ServerSockt *serverSockt=new ServerSockt();
 	ThreadPool *threadPoll=new ThreadPool();
-	epoll_event events[ 10 ];
-	Client clinet[40];
+	epoll_event events[ MAX_FD ];
+	Client clinet[MAX_FD];
 	EPOLL::epollfd=epoll_create(5);
 	EPOLL::addfd( serverSockt->get_fd(), false );
 	while (true)
 	{
 		info("%s epollBlock",pre);
-		int number= epoll_wait( EPOLL::epollfd, events, 10, -1 );
+		int number= epoll_wait( EPOLL::epollfd, events, MAX_FD, -1 );
 		 if ( ( number < 0 ) && ( errno != EINTR ) ) {
 			 info("%s epollFailure",pre);
             break;
@@ -50,12 +51,10 @@ int main()
 			{
 				info("%s IP=%s States=ReadEvents fd=%d",pre,clinet[sockfd].IP,sockfd);
 				threadPoll->append(Task(clinet+sockfd,1));
-				//clinet[sockfd].Read();
 			}
 			else if(events[i].events&EPOLLOUT){
 				info("%s IP=%s States=WriteEvents fd=%d",pre,clinet[sockfd].IP,sockfd);
 				threadPoll->append(Task(clinet+sockfd,2));
-				//clinet[sockfd].Write();
 			}else{
 				info("%s IP=%s States=SocktError fd=%d",pre,clinet[sockfd].IP,sockfd);
 				clinet[sockfd].Close();
@@ -64,6 +63,6 @@ int main()
 		info("%s epollNumbers=%d",pre,number);
 	}
 	delete serverSockt;
-	//delete threadPoll;
+	delete threadPoll;
 	return 0;
 }

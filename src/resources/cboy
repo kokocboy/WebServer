@@ -137,10 +137,11 @@ input,button {
 }
         </style>
         <title>yangguoqing</title>
+        <link rel="icon" href="../favicon.ico">
     </head>
     <body>
         <div class="box">
-            <h2>Cboy web rand=</h2>
+            <h2>Cboy web rand=cboy</h2>
             <form action="">
                 <div class="item">
                     <input type="text" required>
