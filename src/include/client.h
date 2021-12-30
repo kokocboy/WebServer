@@ -88,6 +88,7 @@ bool Client::Read()
 }
 bool Client::Write()
 {
+	//cout<<readStr<<endl;
 	info("%s IP=%s States=Write fd=%d", pre, IP, fd);
 	char *buf = (char *)writeStr.data();
 	if (!writeStr.size())

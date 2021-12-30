@@ -19,6 +19,7 @@
 using namespace std;
 int main()
 {
+	Log *log=new Log();
 	ServerSockt *serverSockt=new ServerSockt();
 	ThreadPool *threadPoll=new ThreadPool();
 	epoll_event events[ MAX_FD ];
@@ -62,6 +63,7 @@ int main()
 		}
 		info("%s epollNumbers=%d",pre,number);
 	}
+	delete log;
 	delete serverSockt;
 	delete threadPoll;
 	return 0;
