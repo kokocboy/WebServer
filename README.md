@@ -11,3 +11,9 @@
 
 
 开发中
+
+# 压力测试
+- Web Bench 1.5
+
+
+http://home.tiscali.cz/~cz210552/webbench
