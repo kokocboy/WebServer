@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <sys/epoll.h>
 #include <fstream>
-#include <map>
+#include <set>
 #include <vector>
 #include "log.h"
 #include "epoll.h"
@@ -21,7 +21,7 @@ class Client
 {
 private:
 	void get_file();
-	map<string, string> ma;
+	set<string> se;
 
 public:
 	Client();
@@ -68,6 +68,7 @@ bool Client::Read()
 			}
 			return true;
 		}
+		Close();
 		error("%s IP=%s States=error", pre, IP);
 		return false;
 	}
@@ -88,7 +89,7 @@ bool Client::Read()
 }
 bool Client::Write()
 {
-	//cout<<readStr<<endl;
+	cout<<readStr<<endl;
 	info("%s IP=%s States=Write fd=%d", pre, IP, fd);
 	char *buf = (char *)writeStr.data();
 	if (!writeStr.size())
@@ -101,6 +102,7 @@ bool Client::Write()
 	if (write_bytes <= 0)
 	{
 		error("%s IP=%s sendError", pre, IP);
+		Close();
 		return false;
 	}
 	info("%s IP=%s writeLen=%d", pre, IP, write_bytes);
@@ -128,8 +130,7 @@ void Client::Solve()
 				i++;
 				continue;
 			}
-			int pos = str.find(" ");
-			ma[str.substr(0, pos)] = str.substr(pos + 1, str.size() - pos - 1);
+			//se.insert(str);
 			str.clear();
 			i++;
 			continue;
@@ -172,11 +173,11 @@ void Client::get_file()
 }
 void Client::Close()
 {
-	EPOLL::removefd(fd);
 	info("%s IP=%s client end", pre, IP);
 	readStr.clear();
-	ma.clear();
+	se.clear();
 	requseHead.clear();
 	writeStr.clear();
+	EPOLL::removefd(fd);
 }
 #endif

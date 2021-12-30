@@ -15,7 +15,7 @@
 #include "../include/epoll.h"
 #include "../include/threadPool.h"
 //65536
-#define MAX_FD 1000
+#define MAX_FD 10000
 using namespace std;
 int main()
 {

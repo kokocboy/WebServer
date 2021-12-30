@@ -27,6 +27,7 @@
     "list": "cpp",
     "vector": "cpp",
     "string_view": "cpp",
-    "ranges": "cpp"
+    "ranges": "cpp",
+    "numeric": "cpp"
   }
 }

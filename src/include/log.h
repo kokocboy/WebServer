@@ -50,8 +50,6 @@ Log::~Log()
 }
 void Log::push(string str)
 {
-    //cout<<str<<endl;
-   // return ;
     int index = __sync_fetch_and_add(&rollIndex, 1) % rollLen;
     que[index].push(str);
     if(runTop&&index==runIndex){
